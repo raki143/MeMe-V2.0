@@ -23,6 +23,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var bottomBar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var selectedTextField: UITextField!
     
@@ -30,6 +31,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.isEnabled = false
+        saveButton.isEnabled = false
         let textFieldsArray = [topTextField,bottomTextField]
         textFieldsConfiguration(textFields: textFieldsArray)
         
@@ -133,6 +135,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             self.imagePickerView.image = image
             shareButton.isEnabled = true
+            saveButton.isEnabled = true
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -187,9 +190,18 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     }
     
+    @IBAction func saveButtonPressed(_ sender:AnyObject){
+        
+        let memedImage = generateMemedImage()
+        self.save(memedImage)
+        //TODO: unwind segue instead of dismiss
+        dismiss(animated: true, completion: nil)
+    }
+    
     func save(_ memedImage:UIImage){
         let meme = MemeModel(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
-        print(meme)
+        
+        MemeCollection.add(Meme: meme)
     
     }
     
