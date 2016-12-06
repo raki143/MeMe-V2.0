@@ -81,6 +81,16 @@ class MemeTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if !tableView.isEditing {
+            
+            let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+            detailVC.meme = MemeCollection.getMeme(atIndex: indexPath.row)
+            navigationController!.pushViewController(detailVC, animated: true)
+        }
+    }
+    
     func addMemeIfMemeCollectionIsEmpty(){
         
         if MemeCollection.count() == 0{
