@@ -56,8 +56,8 @@
 		7EC8EF591DF6FBD900676092 /* MeMe V2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				7EC8EF6E1DF7000400676092 /* EditMemeViewController.swift */,
-				7EC8EF6F1DF7000400676092 /* MemeModel.swift */,
+				7EC8EF731DF71D5300676092 /* ViewControllers */,
+				7EC8EF721DF71D2000676092 /* Model */,
 				7EC8EF5A1DF6FBD900676092 /* AppDelegate.swift */,
 				7EC8EF601DF6FBD900676092 /* Main.storyboard */,
 				7EC8EF631DF6FBD900676092 /* Assets.xcassets */,
@@ -65,6 +65,22 @@
 				7EC8EF681DF6FBD900676092 /* Info.plist */,
 			);
 			path = "MeMe V2.0";
+			sourceTree = "<group>";
+		};
+		7EC8EF721DF71D2000676092 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7EC8EF6F1DF7000400676092 /* MemeModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7EC8EF731DF71D5300676092 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7EC8EF6E1DF7000400676092 /* EditMemeViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +319,7 @@
 				7EC8EF6D1DF6FBD900676092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
