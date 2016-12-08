@@ -12,8 +12,18 @@ private let reuseIdentifier = "MemeCollectionCell"
 
 class MemeCollectionViewController: UICollectionViewController {
 
+    
+    var editOrDoneButton : UIBarButtonItem!
+    var addORDeleteButton : UIBarButtonItem!
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        editOrDoneButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEdit))
+        addORDeleteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapaddOrDelete))
+        navigationItem.leftBarButtonItem = editOrDoneButton
+        navigationItem.rightBarButtonItem = addORDeleteButton
 
     }
     
@@ -50,6 +60,16 @@ class MemeCollectionViewController: UICollectionViewController {
         let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailVC.meme = MemeCollection.getMeme(atIndex: indexPath.row)
         navigationController!.pushViewController(detailVC, animated: true)
+        
+    }
+    
+    func didTapEdit(){
+        
+        
+        
+    }
+    
+    func didTapaddOrDelete(){
         
     }
 }

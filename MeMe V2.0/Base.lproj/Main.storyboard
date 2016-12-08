@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--Meme Collection View Controller-->
+        <!--Saved Memes-->
         <scene sceneID="lZB-50-B1T">
             <objects>
                 <collectionViewController id="0xI-sy-F4G" customClass="MemeCollectionViewController" customModule="MeMe_V2_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                             <outlet property="delegate" destination="0xI-sy-F4G" id="p6S-mR-PoF"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="3bb-nP-AZh"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="3bb-nP-AZh"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifD-MN-mE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75O-WE-NBe" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="95"/>
+            <point key="canvasLocation" x="2626" y="-322"/>
         </scene>
         <!--Meme Detail-->
         <scene sceneID="f1l-rI-bn7">
@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVa-0y-vyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="795.6521739130435"/>
+            <point key="canvasLocation" x="2530" y="357"/>
         </scene>
     </scenes>
     <resources>
