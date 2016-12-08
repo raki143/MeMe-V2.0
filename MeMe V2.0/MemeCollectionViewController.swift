@@ -15,24 +15,31 @@ class MemeCollectionViewController: UICollectionViewController {
     
     var editOrDoneButton : UIBarButtonItem!
     var addORDeleteButton : UIBarButtonItem!
-    
+    var editingMode = false
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editOrDoneButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEdit))
-        addORDeleteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapaddOrDelete))
-        navigationItem.leftBarButtonItem = editOrDoneButton
-        navigationItem.rightBarButtonItem = addORDeleteButton
-
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setDefaultState()
         collectionView?.reloadData()
     }
 
 
+    func setDefaultState(){
+        
+        editOrDoneButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEdit))
+        addORDeleteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapaddOrDelete))
+        navigationItem.leftBarButtonItem = editOrDoneButton
+        navigationItem.rightBarButtonItem = addORDeleteButton
+        
+    }
+    
+    
     // MARK: UICollectionViewDataSource methods
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,11 +72,42 @@ class MemeCollectionViewController: UICollectionViewController {
     
     func didTapEdit(){
         
+        editingMode = !editingMode
         
+        if editingMode{
+            
+           editOrDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapEdit))
+            navigationItem.leftBarButtonItem = editOrDoneButton
+            
+            addORDeleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(showDeleteAlert))
+            navigationItem.rightBarButtonItem = addORDeleteButton
+            
+        }else{
+            setDefaultState()
+        }
         
     }
     
     func didTapaddOrDelete(){
         
+        if editingMode{
+            
+            
+        }else{
+            presentEditMemeController()
+        }
     }
+    
+    func presentEditMemeController(){
+        
+        let memeCreator = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! EditMemeViewController
+        present(memeCreator, animated: false, completion: nil)
+        
+    }
+    
+    func showDeleteAlert(){
+        
+    }
+    
+    
 }
