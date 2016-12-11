@@ -162,6 +162,8 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         {
             selectedTextField.resignFirstResponder()   // Keyboard should resign
         }
+        
+        saveButton.isEnabled = false
     }
 
     // MARK: - Share button pressed
