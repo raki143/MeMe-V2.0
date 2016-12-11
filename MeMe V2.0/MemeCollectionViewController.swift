@@ -16,6 +16,7 @@ class MemeCollectionViewController: UICollectionViewController {
     private var editOrDoneButton : UIBarButtonItem!
     private var addORDeleteButton : UIBarButtonItem!
     private var editingMode = false
+    private var selectedMemeImages = Set<UIImage>()
     private var selectedMemes = Set<NSIndexPath>()
     
     override func viewDidLoad() {
@@ -44,12 +45,11 @@ class MemeCollectionViewController: UICollectionViewController {
             collectionView?.deselectItem(at: item as IndexPath, animated: false)
             let cell = collectionView?.cellForItem(at: item as IndexPath) as! MemeCollectionViewCell
             cell.isSelected(false)
-            
-            
         }
         
         // remove all items in selectedMemes
         selectedMemes.removeAll()
+        selectedMemeImages.removeAll()
         collectionView?.reloadData()
         
         editingMode = false
@@ -94,8 +94,9 @@ class MemeCollectionViewController: UICollectionViewController {
             let cell = collectionView.cellForItem(at: indexPath) as! MemeCollectionViewCell
         
             // saving index of selected collection view cell in selectedMemes array.
+            let memedImage = cell.collectionCellImageView.image
+            selectedMemeImages.insert(memedImage!)
             selectedMemes.insert(indexPath as NSIndexPath)
-            
             cell.isSelected(true)
             addORDeleteButton.isEnabled = true
             
@@ -169,10 +170,10 @@ class MemeCollectionViewController: UICollectionViewController {
     
     func deleteMeme(){
         
-        if selectedMemes.count > 0{
+        if selectedMemeImages.count > 0{
             
-            for item in selectedMemes{
-                MemeCollection.removeMeme(atIndex: item.item)
+            for item in selectedMemeImages{
+                MemeCollection.remove(Meme: item)
             }
             setDefaultState()
         }

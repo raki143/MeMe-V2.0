@@ -194,7 +194,6 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         let memedImage = generateMemedImage()
         self.save(memedImage)
-        //TODO: unwind segue instead of dismiss
         dismiss(animated: true, completion: nil)
     }
     

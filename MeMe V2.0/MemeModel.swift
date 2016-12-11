@@ -30,7 +30,7 @@ struct MemeCollection{
     }
     
     static func count() -> Int{
-        return getMemeStorage().memes.count
+        return allMemes.count
     }
     
     static func getMemeStorage() -> AppDelegate{
@@ -46,8 +46,16 @@ struct MemeCollection{
         return allMemes[index]
     }
     
-    static func updateMeme(atIndex index:Int, withMeme meme:MemeModel){
-       return getMemeStorage().memes[index] = meme
+    
+    static func remove(Meme receivedMeme:UIImage){
+        
+        for index in 0..<count(){
+            
+            if allMemes[index].memedImage == receivedMeme{
+                removeMeme(atIndex: index)
+                return
+            }
+        }
     }
     
     static func removeMeme(atIndex index:Int){
