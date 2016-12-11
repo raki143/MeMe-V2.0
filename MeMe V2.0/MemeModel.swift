@@ -16,6 +16,12 @@ struct MemeModel{
     let memedImage: UIImage!
 }
 
+extension MemeModel:Equatable{
+    
+    static func ==(lhs: MemeModel , rhs: MemeModel) -> Bool {
+        return lhs.memedImage == rhs.memedImage
+    }
+}
 // convenience methods and variables for accessing and altering the collection of memes
 struct MemeCollection{
     
@@ -45,6 +51,7 @@ struct MemeCollection{
     }
     
     static func removeMeme(atIndex index:Int){
+        print("index is \(index)")
         getMemeStorage().memes.remove(at: index)
     }
 }

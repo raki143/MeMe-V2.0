@@ -16,7 +16,7 @@ class MemeCollectionViewController: UICollectionViewController {
     private var editOrDoneButton : UIBarButtonItem!
     private var addORDeleteButton : UIBarButtonItem!
     private var editingMode = false
-    private var selectedMemes = [IndexPath]()
+    private var selectedMemes = Set<NSIndexPath>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setDefaultState()
-        collectionView?.reloadData()
+
     }
 
 
@@ -38,6 +38,21 @@ class MemeCollectionViewController: UICollectionViewController {
         addORDeleteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapaddOrDelete))
         navigationItem.leftBarButtonItem = editOrDoneButton
         navigationItem.rightBarButtonItem = addORDeleteButton
+        
+        // deselect every cell in selectedMemes
+        for item in selectedMemes{
+            collectionView?.deselectItem(at: item as IndexPath, animated: false)
+            let cell = collectionView?.cellForItem(at: item as IndexPath) as! MemeCollectionViewCell
+            cell.isSelected(false)
+            
+            
+        }
+        
+        // remove all items in selectedMemes
+        selectedMemes.removeAll()
+        collectionView?.reloadData()
+        
+        editingMode = false
         
         // If there are no memes, present EditMemeViewController
         if MemeCollection.count() > 0{
@@ -77,7 +92,10 @@ class MemeCollectionViewController: UICollectionViewController {
         if editingMode{
             
             let cell = collectionView.cellForItem(at: indexPath) as! MemeCollectionViewCell
-            selectedMemes.append(indexPath)
+        
+            // saving index of selected collection view cell in selectedMemes array.
+            selectedMemes.insert(indexPath as NSIndexPath)
+            
             cell.isSelected(true)
             addORDeleteButton.isEnabled = true
             
@@ -90,6 +108,8 @@ class MemeCollectionViewController: UICollectionViewController {
         }
         
     }
+    
+
     
     // MARK: edit, add and delete methods
     
@@ -131,7 +151,32 @@ class MemeCollectionViewController: UICollectionViewController {
     
     func showDeleteAlert(){
         
+        let alert = UIAlertController(title: "Delete", message: "Do you want to delete selected memes", preferredStyle: .alert)
+        
+        let delete = UIAlertAction(title: "Ok", style: .destructive, handler: {
+            action in self.deleteMeme()
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: {
+            action in self.setDefaultState()
+        })
+        
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+
     }
     
+    func deleteMeme(){
+        
+        if selectedMemes.count > 0{
+            
+            for item in selectedMemes{
+                MemeCollection.removeMeme(atIndex: item.item)
+            }
+            setDefaultState()
+        }
+        
+    }
     
 }
