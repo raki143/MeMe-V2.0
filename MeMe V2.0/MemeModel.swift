@@ -25,7 +25,7 @@ extension MemeModel:Equatable{
 // convenience methods and variables for accessing and altering the collection of memes
 struct MemeCollection{
     
-    static var allMemes:[MemeModel]{
+    private static var allMemes:[MemeModel]{
         return getMemeStorage().memes
     }
     
@@ -33,7 +33,7 @@ struct MemeCollection{
         return allMemes.count
     }
     
-    static func getMemeStorage() -> AppDelegate{
+    private static func getMemeStorage() -> AppDelegate{
         let object = UIApplication.shared.delegate
         return object as! AppDelegate
     }
@@ -58,8 +58,7 @@ struct MemeCollection{
         }
     }
     
-    static func removeMeme(atIndex index:Int){
-        print("index is \(index)")
+   static func removeMeme(atIndex index:Int){
         getMemeStorage().memes.remove(at: index)
     }
 }
