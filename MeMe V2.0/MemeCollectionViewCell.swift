@@ -14,11 +14,7 @@ class MemeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectedCellImage: UIImageView!
     
     func isSelected(_ selected:Bool){
-        if selected{
-            selectedCellImage.isHidden = false
-        }else{
-            selectedCellImage.isHidden = true
-        }
+        selectedCellImage.isHidden = !selected
     }
     
 }

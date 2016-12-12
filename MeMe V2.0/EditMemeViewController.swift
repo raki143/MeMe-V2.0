@@ -9,7 +9,7 @@
 import UIKit
 
 class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
-
+    
     // Meme image and text
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -18,7 +18,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     // Top Bar
     @IBOutlet weak var topBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-
+    
     // Bottom Bar
     @IBOutlet weak var bottomBar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -47,30 +47,26 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         super.viewDidDisappear(animated)
         unsubscribeFromKeyBoardNotification()
     }
-
     
-
+    
+    
     // MARK: -TextFields Configuration
-    func textFieldsConfiguration(textFields: [UITextField?])
-    {
+    func textFieldsConfiguration(textFields: [UITextField?]) {
         let memeTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white,
             NSStrokeColorAttributeName: UIColor.black,
             NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 40)!,
             NSStrokeWidthAttributeName : -4.0
-        ] as [String : Any]
+            ] as [String : Any]
         
-        for textField in textFields
-        {
+        for textField in textFields {
             textField?.defaultTextAttributes = memeTextAttributes
             textField?.textAlignment = .center
-            textField?.delegate = self
         }
     }
-
+    
     // MARK: - KeyBoard Resigning and Notification
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -95,7 +91,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     func keyBoardWillHide(_ notification:Notification){
         if bottomTextField.isFirstResponder{
-             view.frame.origin.y = 0
+            view.frame.origin.y = 0
         }
     }
     
@@ -139,7 +135,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
         
@@ -158,8 +154,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         bottomTextField.text = nil                  // Clear Bottom TextField
         imagePickerView.image = nil                     // Clear ImageViewer
         shareButton.isEnabled = false                 // Disabled share button
-        if(selectedTextField != nil)
-        {
+        if(selectedTextField != nil){
             selectedTextField.resignFirstResponder()   // Keyboard should resign
         }
         
@@ -169,9 +164,9 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         if MemeCollection.count() > 0{
             dismiss(animated: true, completion: nil)
         }
-
+        
     }
-
+    
     // MARK: - Share button pressed
     
     @IBAction func shareMeme(_ sender: AnyObject) {
@@ -189,13 +184,13 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad{
             
-        
-                activityViewController.popoverPresentationController?.barButtonItem = shareButton
+            
+            activityViewController.popoverPresentationController?.barButtonItem = shareButton
             
         }
         present(activityViewController, animated: true, completion:nil)
-
-    
+        
+        
     }
     
     @IBAction func saveButtonPressed(_ sender:AnyObject){
@@ -209,7 +204,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         let meme = MemeModel(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
         
         MemeCollection.add(Meme: meme)
-    
+        
     }
     
     func toolBarVisible(_ visible:Bool){
