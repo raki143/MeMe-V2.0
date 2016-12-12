@@ -17,7 +17,7 @@ class MemeCollectionViewController: UICollectionViewController {
     private var addORDeleteButton : UIBarButtonItem!
     private var editingMode = false
     private var selectedMemeImages = Set<UIImage>()
-    private var selectedMemes = Set<NSIndexPath>()
+    private var selectedMemes = Set<IndexPath>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ class MemeCollectionViewController: UICollectionViewController {
             // saving index of selected collection view cell in selectedMemes array.
             let memedImage = cell.collectionCellImageView.image
             selectedMemeImages.insert(memedImage!)
-            selectedMemes.insert(indexPath as NSIndexPath)
+            selectedMemes.insert(indexPath)
             cell.isSelected(true)
             addORDeleteButton.isEnabled = true
             
@@ -118,7 +118,7 @@ class MemeCollectionViewController: UICollectionViewController {
             let cell = collectionView.cellForItem(at: indexPath) as! MemeCollectionViewCell
             let memedImage = cell.collectionCellImageView.image
             cell.isSelected(false)
-            selectedMemes.remove(indexPath as NSIndexPath)
+            selectedMemes.remove(indexPath)
             selectedMemeImages.remove(memedImage!)
             
         }
