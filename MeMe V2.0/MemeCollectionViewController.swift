@@ -110,7 +110,19 @@ class MemeCollectionViewController: UICollectionViewController {
         
     }
     
-
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        if editingMode{
+            
+            navigationItem.rightBarButtonItem?.isEnabled = selectedMemes.count > 0
+            let cell = collectionView.cellForItem(at: indexPath) as! MemeCollectionViewCell
+            let memedImage = cell.collectionCellImageView.image
+            cell.isSelected(false)
+            selectedMemes.remove(indexPath as NSIndexPath)
+            selectedMemeImages.remove(memedImage!)
+            
+        }
+    }
     
     // MARK: edit, add and delete methods
     
