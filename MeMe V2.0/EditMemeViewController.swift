@@ -164,6 +164,12 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         }
         
         saveButton.isEnabled = false
+        
+        // dismiss only if atleast one meme is saved
+        if MemeCollection.count() > 0{
+            dismiss(animated: true, completion: nil)
+        }
+
     }
 
     // MARK: - Share button pressed
