@@ -20,7 +20,7 @@ class MemeCollectionViewController: UICollectionViewController {
     private var selectedMemes = Set<IndexPath>()
     private let space:CGFloat = 3.0
     
-    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet private var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        let dimension = (view.frame.size.width - 2 * space) / 3.0
+        let dimension = (view.frame.size.width - 2 * space) / space
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
@@ -45,7 +45,7 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
 
-    func setDefaultState(){
+   private func setDefaultState(){
         
         // add edit and add UIBarButtonItem
         editOrDoneButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEdit))
@@ -135,7 +135,7 @@ class MemeCollectionViewController: UICollectionViewController {
     
     // MARK: edit, add and delete methods
     
-    func didTapEdit(){
+     func didTapEdit(){
         
         editingMode = !editingMode
         
@@ -154,24 +154,20 @@ class MemeCollectionViewController: UICollectionViewController {
         
     }
     
-    func didTapaddOrDelete(){
+     func didTapaddOrDelete(){
         
-        if editingMode{
-            
-            
-        }else{
-            presentEditMemeController()
-        }
+        presentEditMemeController()
+
     }
     
-    func presentEditMemeController(){
+    private func presentEditMemeController(){
         
         let memeCreator = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! EditMemeViewController
         present(memeCreator, animated: false, completion: nil)
         
     }
     
-    func showDeleteAlert(){
+     func showDeleteAlert(){
         
         let alert = UIAlertController(title: "Delete", message: "Do you want to delete selected memes", preferredStyle: .alert)
         
@@ -189,7 +185,7 @@ class MemeCollectionViewController: UICollectionViewController {
 
     }
     
-    func deleteMeme(){
+   func deleteMeme(){
         
         if selectedMemeImages.count > 0{
             
