@@ -18,6 +18,9 @@ class MemeCollectionViewController: UICollectionViewController {
     private var editingMode = false
     private var selectedMemeImages = Set<UIImage>()
     private var selectedMemes = Set<IndexPath>()
+    private let space:CGFloat = 3.0
+    
+    @IBOutlet var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,16 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         setDefaultState()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        let dimension = (view.frame.size.width - 2 * space) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
 
 
@@ -77,10 +90,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
         
         cell.collectionCellImageView.image = MemeCollection.getMeme(atIndex: indexPath.item).memedImage
-    
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 8
     
         return cell
     }

@@ -169,6 +169,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Saved Memes" id="3bb-nP-AZh"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="wfI-2v-ntO" id="cd9-QE-mxb"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifD-MN-mE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
