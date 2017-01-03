@@ -58,18 +58,18 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cQH-aG-DmW" id="bRd-2d-sXw">
-                                    <frame key="frameInset" width="342" height="43.5"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y9O-JC-RPF">
-                                            <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
+                                            <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1aa-Op-FNV">
-                                            <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
+                                            <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -219,6 +219,16 @@
                                             <action selector="pickAnImage:" destination="o5F-GW-YF6" id="t2p-W0-pGS"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ym1-YQ-1Pg"/>
+                                    <barButtonItem title="color" id="b1i-60-ss9">
+                                        <connections>
+                                            <segue destination="Meh-nA-F03" kind="popoverPresentation" identifier="colorPicker" popoverAnchorBarButtonItem="b1i-60-ss9" id="7hD-aG-0dZ">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="BSx-Nh-6dk"/>
+                                    <barButtonItem title="font" id="vee-eI-BST"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Rwa-A3-iz7"/>
                                 </items>
                             </toolbar>
@@ -267,6 +277,7 @@
                         <outlet property="bottomBar" destination="FsT-oz-8oD" id="Xcb-7o-5CN"/>
                         <outlet property="bottomTextField" destination="xiC-aI-Hzm" id="1v8-ee-aqE"/>
                         <outlet property="cameraButton" destination="MmP-Yn-eh4" id="Bre-Wc-eob"/>
+                        <outlet property="colorPickerButton" destination="b1i-60-ss9" id="qlS-xw-cTx"/>
                         <outlet property="imagePickerView" destination="f5I-sK-87H" id="2Q5-r8-eNg"/>
                         <outlet property="saveButton" destination="7eK-cF-Ft7" id="9hh-bj-XD4"/>
                         <outlet property="shareButton" destination="YNo-Rn-0DO" id="Gu1-so-OGM"/>
@@ -276,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75O-WE-NBe" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2626" y="-322"/>
+            <point key="canvasLocation" x="3159" y="-321"/>
         </scene>
         <!--Meme Detail-->
         <scene sceneID="f1l-rI-bn7">
@@ -306,7 +317,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVa-0y-vyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="357"/>
+            <point key="canvasLocation" x="2476" y="372"/>
+        </scene>
+        <!--Swift Color Picker View Controller-->
+        <scene sceneID="2TN-NU-LrC">
+            <objects>
+                <viewController storyboardIdentifier="colorPicker" id="Meh-nA-F03" customClass="SwiftColorPickerViewController" customModule="MeMe_V2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eeu-ah-sgq"/>
+                        <viewControllerLayoutGuide type="bottom" id="nuY-US-RKy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hgH-Nn-L58" customClass="SwiftColorView" customModule="MeMe_V2_0" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMD-hJ-E2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4094" y="-51"/>
         </scene>
     </scenes>
     <resources>
