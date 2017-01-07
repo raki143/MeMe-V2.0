@@ -63,13 +63,18 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
             let popOverPresentation : UIPopoverPresentationController = popoverVC.popoverPresentationController!
             popOverPresentation.delegate = self
           
+        }else if segue.identifier == "fontPicker"{
+            
+            let popoverVC = segue.destination as! fontViewController
+            let popOverPresentation : UIPopoverPresentationController = popoverVC.popoverPresentationController!
+            popOverPresentation.delegate = self
         }
     }
 
     
     
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-        popoverPresentationController.barButtonItem = colorPickerButton
+     //   popoverPresentationController.barButtonItem = colorPickerButton
         popoverPresentationController.permittedArrowDirections = .any
     }
     /* Popover delegate method */
