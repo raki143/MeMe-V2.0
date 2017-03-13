@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIPopoverPresentationControllerDelegate {
     
     // Meme image and text
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -25,7 +25,10 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var colorPickerButton: UIBarButtonItem!
+    
     var selectedTextField: UITextField!
+    var fontAttributes: FontAttributes!
     
     // MARK: - View Methods
     override func viewDidLoad() {
@@ -33,6 +36,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         shareButton.isEnabled = false
         saveButton.isEnabled = false
         let textFieldsArray = [topTextField,bottomTextField]
+        fontAttributes = FontAttributes()
         textFieldsConfiguration(textFields: textFieldsArray)
         
     }
@@ -48,14 +52,44 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         unsubscribeFromKeyBoardNotification()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "colorPicker"{
+            
+            /* Launch color picker in popover view */
+            let popoverVC = segue.destination as! SwiftColorPickerViewController
+            popoverVC.delegate = self
+            
+            let popOverPresentation : UIPopoverPresentationController = popoverVC.popoverPresentationController!
+            popOverPresentation.delegate = self
+          
+        }else if segue.identifier == "fontPicker"{
+            
+            let popoverVC = segue.destination as! FontViewController
+            let popOverPresentation : UIPopoverPresentationController = popoverVC.popoverPresentationController!
+            popOverPresentation.delegate = self
+        }
+    }
+
     
     
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+     
+        popoverPresentationController.permittedArrowDirections = .any
+    }
+    
+    /* Popover delegate method */
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        
+        return UIModalPresentationStyle.none
+    }
+
     // MARK: -TextFields Configuration
     func textFieldsConfiguration(textFields: [UITextField?]) {
         let memeTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSStrokeColorAttributeName: UIColor.black,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 40)!,
+            NSForegroundColorAttributeName: fontAttributes.fontColor,
+            NSStrokeColorAttributeName: fontAttributes.borderColor,
+            NSFontAttributeName: UIFont(name: fontAttributes.fontName, size: fontAttributes.fontSize)!,
             NSStrokeWidthAttributeName : -4.0
             ] as [String : Any]
         
@@ -229,4 +263,16 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
         return memedImage
     }
 }
+
+extension EditMemeViewController : SwiftColorPickerDelegate{
+    
+    func colorSelectionChanged(selectedColor color: UIColor) {
+        
+        fontAttributes.fontColor = color
+        let textFieldsArray = [topTextField,bottomTextField]
+        textFieldsConfiguration(textFields: textFieldsArray)
+
+    }
+}
+
 

@@ -62,3 +62,11 @@ struct MemeCollection{
         getMemeStorage().memes.remove(at: index)
     }
 }
+
+/* Stores font attributes for a meme */
+struct FontAttributes {
+    var fontSize: CGFloat = 40.0
+    var fontName = "HelveticaNeue-CondensedBlack"
+    var fontColor = UIColor.white
+    var borderColor = UIColor.black
+}
