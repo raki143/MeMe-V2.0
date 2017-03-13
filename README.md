@@ -7,6 +7,10 @@ This app enables a user to take a picture, and add text at the top and bottom to
 
 - Selected image will be appeared on image viewer, where user is allowed to edit the text fields. The Meme can be saved and shared in social media such as facebook, twitter, etc.
 
+- __SwiftColorPickerViewController__:
+A special thanks goes to: "Christian Zimmermann" who wrote the code for the SwiftColorPicker. You can view his GitHub page here: https://github.com/Christian1313/iOS_Swift_ColorPicker.
+
+- __fontViewController__: This view controller is used to select different fonts and change font sizes.
 - __MemeTableViewController__: This view controller shows saved memes in table view.
 - __MemeCollectionViewController__: This view controller shows saved memes in collection view.
 
@@ -28,3 +32,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
