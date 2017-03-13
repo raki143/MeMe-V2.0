@@ -50,26 +50,26 @@
             <objects>
                 <tableViewController id="BU8-k4-8ig" customClass="MemeTableViewController" customModule="MeMe_V2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tGp-jB-ofg">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemeTableCell" textLabel="Y9O-JC-RPF" detailTextLabel="1aa-Op-FNV" style="IBUITableViewCellStyleSubtitle" id="cQH-aG-DmW">
-                                <rect key="frame" x="0.0" y="92" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cQH-aG-DmW" id="bRd-2d-sXw">
-                                    <frame key="frameInset" width="830" height="43"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y9O-JC-RPF">
-                                            <frame key="frameInset" minX="176" minY="4" width="34" height="21"/>
+                                            <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1aa-Op-FNV">
-                                            <frame key="frameInset" minX="176" minY="25" width="44" height="15"/>
+                                            <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -121,7 +121,7 @@
             <objects>
                 <collectionViewController id="0xI-sy-F4G" customClass="MemeCollectionViewController" customModule="MeMe_V2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="0rO-Su-aXe">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wfI-2v-ntO">
@@ -179,7 +179,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IAG-js-5v0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b47-SI-eB9">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJ9-hX-dQh">
@@ -214,21 +214,22 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="fixedSpace" id="56y-RO-yUh"/>
-                                    <barButtonItem tag="2" title="Album" style="plain" id="Fso-FG-6Tp">
+                                    <barButtonItem tag="2" image="Album" width="62" style="plain" id="Fso-FG-6Tp">
+                                        <inset key="imageInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <action selector="pickAnImage:" destination="o5F-GW-YF6" id="t2p-W0-pGS"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ym1-YQ-1Pg"/>
-                                    <barButtonItem title="color" id="b1i-60-ss9">
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="ym1-YQ-1Pg"/>
+                                    <barButtonItem image="paint" width="48" id="b1i-60-ss9">
                                         <connections>
                                             <segue destination="Meh-nA-F03" kind="popoverPresentation" identifier="colorPicker" popoverAnchorBarButtonItem="b1i-60-ss9" id="7hD-aG-0dZ">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="BSx-Nh-6dk"/>
-                                    <barButtonItem title="font" id="vee-eI-BST">
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="BSx-Nh-6dk"/>
+                                    <barButtonItem image="font" id="vee-eI-BST">
                                         <connections>
                                             <segue destination="rOO-Jq-IKi" kind="popoverPresentation" identifier="fontPicker" popoverAnchorBarButtonItem="vee-eI-BST" id="ACv-1b-gTn">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -304,7 +305,7 @@
                         <viewControllerLayoutGuide type="bottom" id="e4D-f5-Mgn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PfF-dh-fkX">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UlH-IT-wvt"/>
@@ -425,8 +426,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Album" width="32" height="32"/>
         <image name="check" width="48" height="48"/>
         <image name="collection" width="30" height="30"/>
+        <image name="font" width="32" height="32"/>
+        <image name="paint" width="32" height="32"/>
         <image name="table" width="30" height="30"/>
     </resources>
 </document>
