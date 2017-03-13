@@ -1,5 +1,5 @@
 //
-//  fontViewController.swift
+//  FontViewController.swift
 //  MeMe V2.0
 //
 //  Created by Rakesh Kumar on 07/01/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class fontViewController: UIViewController {
+class FontViewController: UIViewController {
     
     @IBOutlet weak var fontPicker: UIPickerView!
     @IBOutlet weak var sizeSlider: UISlider!
@@ -56,7 +56,7 @@ class fontViewController: UIViewController {
     
 }
 
-extension fontViewController : UIPickerViewDataSource, UIPickerViewDelegate{
+extension FontViewController : UIPickerViewDataSource, UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

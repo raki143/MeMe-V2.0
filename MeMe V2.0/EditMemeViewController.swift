@@ -65,7 +65,7 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
           
         }else if segue.identifier == "fontPicker"{
             
-            let popoverVC = segue.destination as! fontViewController
+            let popoverVC = segue.destination as! FontViewController
             let popOverPresentation : UIPopoverPresentationController = popoverVC.popoverPresentationController!
             popOverPresentation.delegate = self
         }
