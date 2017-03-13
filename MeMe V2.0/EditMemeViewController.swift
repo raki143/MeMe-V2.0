@@ -74,11 +74,13 @@ class EditMemeViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-     //   popoverPresentationController.barButtonItem = colorPickerButton
+     
         popoverPresentationController.permittedArrowDirections = .any
     }
+    
     /* Popover delegate method */
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        
         return UIModalPresentationStyle.none
     }
 
